@@ -30,14 +30,6 @@ async def main():
         allowed_updates=dp.resolve_used_update_types()
     )
 
-    # Creating an aiohttp application
-    app = web.Application()
-    SimpleRequestHandler(dispatcher=dp, bot=bot).register(app, path=WEBHOOK_PATH)
-    runner = web.AppRunner(app)
-    await runner.setup()
-    site = web.TCPSite(runner, host=WEBAPP_HOST, port=WEBAPP_PORT)
-    await site.start()
-
     # Running it forever
     await asyncio.Event().wait()
     await bot.session.close()
