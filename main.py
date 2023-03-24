@@ -1,10 +1,8 @@
 import asyncio
 import logging
 from aiogram import Bot, Dispatcher, Router
-from aiogram.webhook.aiohttp_server import SimpleRequestHandler
-from aiohttp import web
 
-from config import BOT_TOKEN, WEBHOOK_URL, WEBHOOK_PATH, WEBAPP_PORT, WEBAPP_HOST
+from config import BOT_TOKEN, WEBHOOK_URL
 from handlers import register_routers
 
 logging.basicConfig(level=logging.INFO)
