@@ -2,7 +2,7 @@ import asyncio
 import logging
 from aiogram import Bot, Dispatcher, Router
 
-from config import BOT_TOKEN, WEBHOOK_URL
+from config import BOT_TOKEN, WEBHOOK_URL, WEBHOOK_SSL_CERT, WEBAPP_HOST
 from handlers import register_routers
 
 logging.basicConfig(level=logging.INFO)
@@ -24,6 +24,8 @@ async def main():
     # Setting webhook
     await bot.set_webhook(
         url=WEBHOOK_URL,
+        certificate=WEBHOOK_SSL_CERT,
+        ip_address=WEBAPP_HOST,
         drop_pending_updates=True,
         allowed_updates=dp.resolve_used_update_types()
     )
